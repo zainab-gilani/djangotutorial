@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from polls import views
 from polls.views import IndexView, DetailView, ResultsView
+from django.urls import include, path
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     # ex: /polls/
@@ -30,4 +32,4 @@ urlpatterns = [
     path("<int:question_id>/results/", ResultsView.as_view(), name="results"),
     # ex: /polls/5/vote/
     path("<int:question_id>/vote/", views.vote, name="vote"),
-]
+] + debug_toolbar_urls()
